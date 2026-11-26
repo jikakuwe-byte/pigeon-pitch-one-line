@@ -12,4 +12,11 @@ function jokeLine(): string {
   return "PigeonPost: we deliver your messages across the city for breadcrumbs — zero emissions, 100% coo, and we've never lost a parcel, only eaten a few.";
 }
 
-console.log(jokeLine());
+const line = jokeLine();
+// The brief caps the pitch at one line of at most 200 characters:
+// fail loudly instead of silently printing a pitch that breaks the rules.
+if (line.length > 200 || line.includes("\n")) {
+  throw new Error("Pigeon pitch breaks the one-line, 200-character brief.");
+}
+
+console.log(line);
